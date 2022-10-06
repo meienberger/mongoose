@@ -114,6 +114,9 @@ declare module 'mongoose' {
     /** Appends a new $densify operator to this aggregate pipeline */
     densify(arg: PipelineStage.Densify['$densify']): this;
 
+    /** Appends a new $documents operator to this aggregate pipeline */
+    documents(expression: PipelineStage.Documents['$documents']): this;
+
     /**
      * Sets the cursor option for the aggregation query
      */

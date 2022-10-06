@@ -60,6 +60,9 @@ async function run() {
   expectType<ITest[]>(await Test.aggregate<ITest>().sort({ name: 'desc' }));
   expectType<ITest[]>(await Test.aggregate<ITest>().sort({ name: 'descending' }));
   expectType<ITest[]>(await Test.aggregate<ITest>().sort({ name: { $meta: 'textScore' } }));
+
+  // Aggregate.prototype.documents()
+  expectType<ITest[]>(await Test.aggregate<ITest>().documents([ { x: 10 }, { x: 2 }, { x: 5 } ]));
 }
 
 function gh12017_1() {
@@ -131,3 +134,15 @@ function gh12311() {
     }
   };
 }
+
+function gh12312() {
+  const a: PipelineStage.Documents = {
+    $documents: 
+      [
+        { x: 10 },
+        { x: 2 },
+        { x: 5 }
+      ]
+  };  
+}
+    

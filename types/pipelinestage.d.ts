@@ -9,6 +9,7 @@ declare module 'mongoose' {
     | PipelineStage.CollStats
     | PipelineStage.Count
     | PipelineStage.Densify
+    | PipelineStage.Documents
     | PipelineStage.Facet
     | PipelineStage.GeoNear
     | PipelineStage.GraphLookup
@@ -89,6 +90,12 @@ declare module 'mongoose' {
         }
       }
     }
+
+    export interface Documents {
+      /** [`$documents` reference](https://docs.mongodb.com/manual/reference/operator/aggregation/documents/) */
+      $documents: ArrayExpression;
+    }
+
 
     export interface Facet {
       /** [`$facet` reference](https://docs.mongodb.com/manual/reference/operator/aggregation/facet/) */

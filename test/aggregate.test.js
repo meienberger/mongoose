@@ -389,6 +389,18 @@ describe('aggregate: ', function() {
     });
   });
 
+  describe('documents', function() {
+    it('works', function() {
+      const aggregate = new Aggregate();
+      const expression = [{ x: 10 }, { x: 2 }, { x: 5 }];
+
+      aggregate.documents(expression);
+
+      assert.equal(aggregate._pipeline.length, 1);
+      assert.deepEqual(aggregate._pipeline[0].$documents, expression);
+    });
+  });
+
   describe('model()', function() {
     it('works', function() {
       const aggregate = new Aggregate();
